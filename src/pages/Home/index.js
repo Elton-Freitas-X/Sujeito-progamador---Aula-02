@@ -1,10 +1,12 @@
 import React from "react";
 import { FiLink} from "react-icons/fi";
 import { Logo, H1, Span, Label, Input, Button} from './home';
+
 import { useState } from "react";
 import LinkItem from './../../components/LinkItem';
 
-import api from '../../services/api'
+import api from '../../services/api';
+import {saveLink} from '../../services/storeLinks'
 
  const Home = () => {
     const [pega, setPega] = useState('');
@@ -24,6 +26,8 @@ import api from '../../services/api'
             setData(response.data);
             setShowModal(true);
 
+            //funcionalidade criada no storeLinks
+            saveLink('@encurtaLink', response.data)
 
             setPega('');
         }catch{
